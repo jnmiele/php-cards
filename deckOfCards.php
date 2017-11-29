@@ -27,14 +27,12 @@ class Deck
   public function shuffleCards()
   {
     $shuffled = array();
-    $deck = $this->cards;
-    while (count($deck) > 0):
-      $index = array_rand($deck);
-      $card = array_splice($deck, $index, 1)[0]; // => Card > {rank: x, suit: y}
+    while (count($this->cards) > 0):
+      $index = array_rand($this->cards);
+      $card = array_splice($this->cards, $index, 1)[0]; // => Card > {rank: x, suit: y}
       array_push($shuffled, $card);
     endwhile;
-    $deck = $shuffled;
-    return $deck;
+    $this->cards = $shuffled;
   }
 }
 
