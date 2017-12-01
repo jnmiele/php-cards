@@ -29,12 +29,34 @@ class Deck
     $shuffled = array();
     while (count($this->cards) > 0):
       $index = array_rand($this->cards);
-      $card = array_splice($this->cards, $index, 1)[0]; // => Card > {rank: x, suit: y}
+      $card = array_splice($this->cards, $index, 1)[0];
       array_push($shuffled, $card);
     endwhile;
     $this->cards = $shuffled;
   }
+  
+  public function printCards()
+  {
+    foreach ($this->cards as $card) {
+      echo $card->rank . ' of ' . $card->suit . "\n";
+    }
+  }
 }
 
-$d = new Deck();
-$d->shuffleCards();
+class Player 
+{
+  
+  protected $hand;
+  
+  public function __construct()
+  {
+    $this->hand = array();
+  }
+  
+  public function showHand()
+  {
+    foreach ($this->hand as $card) {
+      echo $card->rank . ' of ' . $card->suit;
+    }
+  }
+}
